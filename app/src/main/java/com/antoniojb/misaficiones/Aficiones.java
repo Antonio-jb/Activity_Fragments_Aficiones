@@ -3,6 +3,7 @@ package com.antoniojb.misaficiones;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -25,6 +26,9 @@ public class Aficiones extends AppCompatActivity {
         binding = ActivityAficionesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Log.e("MIRAR", binding.toString());
+
+        Log.e("ACTIONBAR", getSupportActionBar().toString());
         Paginador paginador = new Paginador(this, getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(paginador);
