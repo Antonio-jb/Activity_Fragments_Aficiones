@@ -7,10 +7,10 @@
     android:background="@color/black">
 
     <TextView
-        android:id="@+id/TextoComer"
+        android:id="@+id/TextoDormir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dormir"
+        android:text="¡Dormir también!"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

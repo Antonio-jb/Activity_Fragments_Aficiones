@@ -10,6 +10,12 @@
         />
 
     <item
+        android:id="@+id/aficionesButton"
+        android:title="Aficiones"
+        app:showAsAction="never"
+        />
+
+    <item
         android:id="@+id/aboutMeButton"
         android:title="Sobre mi"
         app:showAsAction="never"

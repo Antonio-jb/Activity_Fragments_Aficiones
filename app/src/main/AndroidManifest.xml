@@ -14,6 +14,11 @@
         android:theme="@style/Theme.MisAficiones"
         tools:targetApi="31">
         <activity
+            android:name=".SobreMi"
+            android:exported="false"
+            android:label="@string/title_activity_sobre_mi"
+            android:theme="@style/Theme.MisAficiones.NoActionBar" />
+        <activity
             android:name=".Aficiones"
             android:exported="true"
             android:label="@string/title_activity_aficiones"

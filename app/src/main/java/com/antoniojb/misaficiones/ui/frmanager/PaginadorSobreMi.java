@@ -7,15 +7,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.antoniojb.misaficiones.fr.aficiones.Comer;
-import com.antoniojb.misaficiones.fr.aficiones.Dormir;
+import com.antoniojb.misaficiones.fr.sobremi.Curso;
+import com.antoniojb.misaficiones.fr.sobremi.Foto;
+import com.antoniojb.misaficiones.fr.sobremi.Nombre;
 
-public class Paginador extends FragmentPagerAdapter {
+public class PaginadorSobreMi extends FragmentPagerAdapter {
 
     private final Context mContext;
 
-    public Paginador(Context context, FragmentManager fm) {
-        super (fm);
+    public PaginadorSobreMi(Context context, FragmentManager fm) {
+        super(fm);
         mContext = context;
     }
 
@@ -24,9 +25,11 @@ public class Paginador extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new Comer();
+                return new Nombre();
             case 1:
-                return new Dormir();
+                return new Foto();
+            case 2:
+                return new Curso();
             default:
                 return null;
         }
@@ -34,6 +37,6 @@ public class Paginador extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 }
