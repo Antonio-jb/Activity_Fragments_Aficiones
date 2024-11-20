@@ -66,7 +66,7 @@ public class TipoVideojuego extends AppCompatActivity {
                 // Si no hay fragmento se muestra un mensaje de error.
                 fragmentName = "Fragmento no disponible";
             }
-            // Mostrar el nombre del fragmento en el Toast.
+            // Aquí se muestra el nombre del fragmento obtenido en el Toast.
             Toast toast = Toast.makeText(this, "¡Aquí tienes los videojuegos de tipo: "+ fragmentName +"!", Toast.LENGTH_SHORT);
             toast.show();
         }
