@@ -71,7 +71,7 @@ public class Aficiones extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("https://github.com/Antonio-jb"));
                 startActivity(intent);
-            }
-        return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
+    }
 }
