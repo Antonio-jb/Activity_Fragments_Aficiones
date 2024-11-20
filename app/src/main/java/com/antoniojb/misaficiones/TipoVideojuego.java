@@ -58,7 +58,7 @@ public class TipoVideojuego extends AppCompatActivity {
             int currentItem = binding.viewPager.getCurrentItem();
             Fragment currentFragment = getSupportFragmentManager().getFragments().get(currentItem);
 
-            // Si el fragmento actual es un fragmento se obtiene el nombre de la clase.
+            // Si el fragmento actual existe se obtiene el nombre de la clase.
             String fragmentName = "";
             if (currentFragment != null) {
                 fragmentName = currentFragment.getClass().getSimpleName(); // Aquí se obtiene el nombre de la clase.
