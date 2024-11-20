@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.antoniojb.misaficiones.databinding.ActivityAficionesBinding;
@@ -43,8 +44,20 @@ public class Aficiones extends AppCompatActivity {
     public boolean onOptionsItemSelected (@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.favButton) {
-            Toast toast = Toast.makeText(this, "¡Como me gustan mis aficiones!", Toast.LENGTH_SHORT);
+
+            int currentItem = binding.viewPager.getCurrentItem();
+            Fragment currentFragment = getSupportFragmentManager().getFragments().get(currentItem);
+
+            String fragmentName = "";
+            if (currentFragment != null) {
+                fragmentName = currentFragment.getClass().getSimpleName();
+            } else {
+                fragmentName = "Fragmento no disponible";
+            }
+
+            Toast toast = Toast.makeText(this, "Ahora mismo estas viendo mi gusto por: "+ fragmentName +".", Toast.LENGTH_SHORT);
             toast.show();
+
         }
         if (id == R.id.aficionesButton) {
             Intent intent = new Intent(Aficiones.this, Aficiones.class);

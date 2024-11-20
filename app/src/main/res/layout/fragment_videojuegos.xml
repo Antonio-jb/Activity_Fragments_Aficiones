@@ -4,21 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">>
+    android:background="@color/black">
 
     <TextView
-        android:id="@+id/TextoComer"
+        android:id="@+id/TextoDormir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¡Como me gusta comer!"
-        android:textSize="30sp"
+        android:text="¡Los videojuegos también!"
+        android:textAlignment="center"
+        android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/white">
-
-
     </TextView>
+
+    <Button
+        android:id="@+id/buttonVideojuego"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver videojuegos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextoDormir" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

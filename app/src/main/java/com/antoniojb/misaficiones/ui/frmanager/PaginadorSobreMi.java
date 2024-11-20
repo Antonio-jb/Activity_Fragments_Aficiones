@@ -36,7 +36,5 @@ public class PaginadorSobreMi extends FragmentPagerAdapter {
     }
 
     @Override
-    public int getCount() {
-        return 3;
-    }
+    public int getCount() { return 3; }
 }

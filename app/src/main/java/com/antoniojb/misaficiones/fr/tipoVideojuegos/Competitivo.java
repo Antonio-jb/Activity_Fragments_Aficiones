@@ -1,4 +1,4 @@
-package com.antoniojb.misaficiones.fr.aficiones;
+package com.antoniojb.misaficiones.fr.tipoVideojuegos;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +11,13 @@ import androidx.fragment.app.Fragment;
 
 import com.antoniojb.misaficiones.R;
 
-public class Dormir extends Fragment {
+public class Competitivo extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_dormir, container, false);
+        return inflater.inflate(R.layout.fragment_videojuego2, container, false);
     }
 }
+
 

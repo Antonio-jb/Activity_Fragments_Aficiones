@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">MisAficiones</string>
     <string name="title_activity_aficiones">Aficiones</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+
+    <string name="hello_blank_fragment_games">Hello blank fragment games</string>
+    <string name="title_activity_tipoVideojuego">Videojuegos</string>
+    <string name="tipovideojuego1">Videojuegos RPG.</string>
+    <string name="tipovideojuego2">Videojuegos Competitivos.</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_sobre_mi">SobreMi</string>
+    <string name="title_activity_sobre_mi">Sobre Mi</string>
 </resources>

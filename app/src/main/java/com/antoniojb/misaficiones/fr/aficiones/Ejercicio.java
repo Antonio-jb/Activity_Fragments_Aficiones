@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import com.antoniojb.misaficiones.R;
 
-public class Comer extends Fragment {
+public class Ejercicio extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_comer, container, false);
+        return inflater.inflate(R.layout.fragment_ejercicio, container, false);
     }
 }
 

@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.antoniojb.misaficiones.fr.aficiones.Comer;
-import com.antoniojb.misaficiones.fr.aficiones.Dormir;
+import com.antoniojb.misaficiones.fr.aficiones.Ejercicio;
+import com.antoniojb.misaficiones.fr.aficiones.Videojuegos;
 
 public class Paginador extends FragmentPagerAdapter {
 
@@ -24,9 +24,9 @@ public class Paginador extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new Comer();
+                return new Ejercicio();
             case 1:
-                return new Dormir();
+                return new Videojuegos();
             default:
                 return null;
         }

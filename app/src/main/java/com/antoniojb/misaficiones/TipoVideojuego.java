@@ -1,5 +1,7 @@
 package com.antoniojb.misaficiones;
 
+import static android.app.PendingIntent.getActivity;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,24 +13,34 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-import com.antoniojb.misaficiones.databinding.ActivitySobreMiBinding;
-import com.antoniojb.misaficiones.ui.frmanager.PaginadorSobreMi;
 
-public class SobreMi extends AppCompatActivity {
+import com.google.android.material.tabs.TabLayout;
+import com.antoniojb.misaficiones.databinding.ActivityTipovideojuegoBinding;
+import com.antoniojb.misaficiones.ui.frmanager.PaginadorTipoVideojuego;
 
-    private ActivitySobreMiBinding binding;
+public class TipoVideojuego extends AppCompatActivity {
+
+    private ActivityTipovideojuegoBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivitySobreMiBinding.inflate(getLayoutInflater());
+        binding = ActivityTipovideojuegoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        PaginadorSobreMi PaginadorSobreMi = new PaginadorSobreMi(this, getSupportFragmentManager());
+        PaginadorTipoVideojuego paginador = new PaginadorTipoVideojuego(this, getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager;
+        viewPager.setAdapter(paginador);
 
-        viewPager.setAdapter(PaginadorSobreMi);
+        TabLayout tabLayout = binding.tipoVideojuegoTabs;
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setTitle(R.string.title_activity_tipoVideojuego);
     }
 
     @Override
@@ -42,26 +54,28 @@ public class SobreMi extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.favButton) {
 
+            // Obtener el fragmento actual visible en el ViewPager
             int currentItem = binding.viewPager.getCurrentItem();
             Fragment currentFragment = getSupportFragmentManager().getFragments().get(currentItem);
 
+            // Si el fragmento actual es un fragmento se obtiene el nombre de la clase.
             String fragmentName = "";
             if (currentFragment != null) {
-                fragmentName = currentFragment.getClass().getSimpleName();
+                fragmentName = currentFragment.getClass().getSimpleName(); // Aquí se obtiene el nombre de la clase.
             } else {
+                // Si no hay fragmento, puedes mostrar un mensaje de error
                 fragmentName = "Fragmento no disponible";
             }
-
-            Toast toast = Toast.makeText(this, "Ahora mismo estas viendo mi '"+ fragmentName +"' de la parte de 'Sobre Mi'. ", Toast.LENGTH_SHORT);
+            // Mostrar el nombre del fragmento en el Toast.
+            Toast toast = Toast.makeText(this, "¡Aquí tienes los videojuegos de tipo: "+ fragmentName +"!", Toast.LENGTH_SHORT);
             toast.show();
-
         }
         if (id == R.id.aficionesButton) {
-            Intent intent = new Intent(SobreMi.this, Aficiones.class);
+            Intent intent = new Intent(TipoVideojuego.this, Aficiones.class);
             startActivity(intent);
         }
         if (id == R.id.aboutMeButton) {
-            Intent intent = new Intent(SobreMi.this, SobreMi.class);
+            Intent intent = new Intent(TipoVideojuego.this, SobreMi.class);
             startActivity(intent);
         }
         if (id == R.id.myCodeButton) {
@@ -73,3 +87,6 @@ public class SobreMi extends AppCompatActivity {
     }
 
 }
+
+
+
