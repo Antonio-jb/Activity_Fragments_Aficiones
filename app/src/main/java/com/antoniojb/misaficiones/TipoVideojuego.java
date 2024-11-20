@@ -54,7 +54,7 @@ public class TipoVideojuego extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.favButton) {
 
-            // Obtener el fragmento actual visible en el ViewPager
+            // Obtener el fragmento actual visible en el ViewPager.
             int currentItem = binding.viewPager.getCurrentItem();
             Fragment currentFragment = getSupportFragmentManager().getFragments().get(currentItem);
 
@@ -63,7 +63,7 @@ public class TipoVideojuego extends AppCompatActivity {
             if (currentFragment != null) {
                 fragmentName = currentFragment.getClass().getSimpleName(); // Aquí se obtiene el nombre de la clase.
             } else {
-                // Si no hay fragmento, puedes mostrar un mensaje de error
+                // Si no hay fragmento se muestra un mensaje de error.
                 fragmentName = "Fragmento no disponible";
             }
             // Mostrar el nombre del fragmento en el Toast.
