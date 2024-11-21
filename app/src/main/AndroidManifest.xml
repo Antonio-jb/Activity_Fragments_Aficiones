@@ -34,6 +34,10 @@
             android:name=".SobreMi"
             android:exported="false"
             android:label="@string/title_activity_sobre_mi" />
+        <activity
+            android:name=".Favoritos"
+            android:exported="false"
+            android:label="@string/title_activity_favoritos" />
     </application>
 
 </manifest>

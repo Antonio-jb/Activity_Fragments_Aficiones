@@ -5,31 +5,42 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-import com.antoniojb.misaficiones.databinding.ActivitySobreMiBinding;
+
+import com.antoniojb.misaficiones.databinding.ActivityFavoritosBinding;
 import com.antoniojb.misaficiones.memoria.FavoritosList;
-import com.antoniojb.misaficiones.ui.frmanager.PaginadorSobreMi;
+import com.antoniojb.misaficiones.ui.frmanager.PaginadorFavoritos;
 
-public class SobreMi extends AppCompatActivity {
+public class Favoritos extends AppCompatActivity {
 
-    private ActivitySobreMiBinding binding;
+    private ActivityFavoritosBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivitySobreMiBinding.inflate(getLayoutInflater());
+        binding = ActivityFavoritosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        PaginadorSobreMi PaginadorSobreMi = new PaginadorSobreMi(this, getSupportFragmentManager());
-        ViewPager viewPager = binding.viewPager;
+        // Aquí se verifica si hay algo añadido en favoritos.
+        if (FavoritosList.getInstance().isEmpty()) {
+            // Aquí se muestra el mensaje si no hay favoritos.
+            binding.nullFavoritos.setVisibility(View.VISIBLE);
+        } else {
+            // Aquí se muestra el ViewPager si ya hay algo añadido en favoritos.
+            binding.nullFavoritos.setVisibility(View.GONE);
+        }
 
-        viewPager.setAdapter(PaginadorSobreMi);
+        PaginadorFavoritos paginadorFavoritos = new PaginadorFavoritos(this, getSupportFragmentManager());
+        ViewPager viewPager = binding.viewPager;
+        viewPager.setAdapter(paginadorFavoritos);
+
     }
 
     @Override
@@ -43,38 +54,27 @@ public class SobreMi extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.favButton) {
 
-            ViewPager viewPager = binding.viewPager;
             int currentItem = binding.viewPager.getCurrentItem();
-            PaginadorSobreMi paginadorSobreMi = (PaginadorSobreMi) viewPager.getAdapter();
             Fragment currentFragment = getSupportFragmentManager().getFragments().get(currentItem);
 
             String fragmentName = "";
             if (currentFragment != null) {
                 fragmentName = currentFragment.getClass().getSimpleName();
-            } else {
-                fragmentName = "Fragmento no disponible";
             }
 
-            Toast toast = Toast.makeText(this, "Ahora mismo estas viendo mi '"+ fragmentName +"' de la parte de 'Sobre Mi'. ", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, "¡Ahora estas en tus " + fragmentName + ".", Toast.LENGTH_SHORT);
             toast.show();
-
-            if (paginadorSobreMi != null){
-                Fragment frActual = paginadorSobreMi.getItem(currentItem);
-                FavoritosList.getInstance().addFavorito(frActual);
-                Toast.makeText(this, "¡Ahora tienes en favoritos el fragmento: " + fragmentName + "!", Toast.LENGTH_SHORT).show();
-            }
-
         }
         if (id == R.id.aficionesButton) {
-            Intent intent = new Intent(SobreMi.this, Aficiones.class);
+            Intent intent = new Intent(Favoritos.this, Aficiones.class);
             startActivity(intent);
         }
         if (id == R.id.aboutMeButton) {
-            Intent intent = new Intent(SobreMi.this, SobreMi.class);
+            Intent intent = new Intent(Favoritos.this, SobreMi.class);
             startActivity(intent);
         }
         if (id == R.id.favoritosButton) {
-            Intent intent = new Intent(SobreMi.this, Favoritos.class);
+            Intent intent = new Intent(Favoritos.this, Favoritos.class);
             startActivity(intent);
         }
         if (id == R.id.myCodeButton) {

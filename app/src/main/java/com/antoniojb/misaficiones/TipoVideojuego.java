@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.antoniojb.misaficiones.memoria.FavoritosList;
+import com.antoniojb.misaficiones.ui.frmanager.PaginadorSobreMi;
 import com.google.android.material.tabs.TabLayout;
 import com.antoniojb.misaficiones.databinding.ActivityTipovideojuegoBinding;
 import com.antoniojb.misaficiones.ui.frmanager.PaginadorTipoVideojuego;
@@ -54,8 +56,9 @@ public class TipoVideojuego extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.favButton) {
 
-            // Obtener el fragmento actual visible en el ViewPager.
+            ViewPager viewPager = binding.viewPager;
             int currentItem = binding.viewPager.getCurrentItem();
+            PaginadorTipoVideojuego paginadorTipoVideojuego = (PaginadorTipoVideojuego) viewPager.getAdapter();
             Fragment currentFragment = getSupportFragmentManager().getFragments().get(currentItem);
 
             // Si el fragmento actual existe se obtiene el nombre de la clase.
@@ -69,6 +72,12 @@ public class TipoVideojuego extends AppCompatActivity {
             // Aquí se muestra el nombre del fragmento obtenido en el Toast.
             Toast toast = Toast.makeText(this, "¡Aquí tienes los videojuegos de tipo: "+ fragmentName +"!", Toast.LENGTH_SHORT);
             toast.show();
+
+            if (paginadorTipoVideojuego != null){
+                Fragment frActual = paginadorTipoVideojuego.getItem(currentItem);
+                FavoritosList.getInstance().addFavorito(frActual);
+                Toast.makeText(this, "¡Ahora tienes en favoritos el fragmento: " + fragmentName + "!", Toast.LENGTH_SHORT).show();
+            }
         }
         if (id == R.id.aficionesButton) {
             Intent intent = new Intent(TipoVideojuego.this, Aficiones.class);
@@ -76,6 +85,10 @@ public class TipoVideojuego extends AppCompatActivity {
         }
         if (id == R.id.aboutMeButton) {
             Intent intent = new Intent(TipoVideojuego.this, SobreMi.class);
+            startActivity(intent);
+        }
+        if (id == R.id.favoritosButton) {
+            Intent intent = new Intent(TipoVideojuego.this, Favoritos.class);
             startActivity(intent);
         }
         if (id == R.id.myCodeButton) {
